@@ -5,11 +5,11 @@
   - name: create dir for work
     file:
       path: /data
-      type: directory
+      state: directory
 
   - name: copy chart to host
     copy:
-      name: ../helm/db
+      src: ../helm/db
       dest: /data/db
 
 #  - name: add helm repo
@@ -18,6 +18,5 @@
 #check if postgres alredy exists
 
   - name: upgrade chart 
-    shell:
-      - helm install test /data/db
+    shell: ' microk8s helm install test /data/db'
     #add when for first launch
