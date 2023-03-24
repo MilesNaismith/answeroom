@@ -10,7 +10,7 @@
   - name: copy chart to host
     copy:
       src: ../helm/db
-      dest: /data/db
+      dest: /data/
 
 #  - name: add helm repo
 #    shell: helm repo add my-repo https://charts.bitnami.com/bitnami
