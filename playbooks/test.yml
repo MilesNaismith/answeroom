@@ -1,0 +1,20 @@
+- name: test
+  hosts: localhost
+
+  tasks:
+  - name: create dir for work
+    file:
+      path: /data
+      type: directory
+
+  - name: copy chart to host
+    copy:
+      name: test_chart
+      dest: /data/test_chart
+
+  - name: add helm repo
+    shell: helm repo add my-repo https://charts.bitnami.com/bitnami
+
+  - name: upgrade chart 
+    shell:
+      - helm upgrade my-repo/postgresql /data/test_chart
