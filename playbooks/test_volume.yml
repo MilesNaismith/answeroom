@@ -1,0 +1,23 @@
+- name: test
+  hosts: localhost
+
+  tasks:
+  - name: create dir for work
+    file:
+      path: /data
+      type: directory
+
+  - name: copy chart to host
+    copy:
+      name: ../helm/db
+      dest: /data/db
+
+#  - name: add helm repo
+#    shell: helm repo add my-repo https://charts.bitnami.com/bitnami
+
+#check if postgres alredy exists
+
+  - name: upgrade chart 
+    shell:
+      - helm install test /data/db
+    #add when for first launch
